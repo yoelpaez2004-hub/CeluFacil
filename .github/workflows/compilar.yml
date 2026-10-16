@@ -47,8 +47,12 @@ jobs:
         run: |
           mkdir -p clave
           if [ -n "$CELUFACIL_CLAVE" ]; then
-            printf '%s' "${CELUFACIL_CLAVE%%:*}" > clave/password.txt
-            printf '%s' "${CELUFACIL_CLAVE#*:}" | base64 -d > clave/release.keystore
+            # Tolerar espacios, saltos de línea o comillas que se cuelan al pegar el secret
+            LIMPIA=$(printf '%s' "$CELUFACIL_CLAVE" | tr -d ' \n\r\t"' )
+            printf '%s' "${LIMPIA%%:*}" > clave/password.txt
+            if ! printf '%s' "${LIMPIA#*:}" | base64 -d > clave/release.keystore 2>/dev/null || [ ! -s clave/release.keystore ]; then
+              echo "::error::El secret CELUFACIL_CLAVE no tiene el formato esperado (contraseña:base64). Borralo y volvé a crearlo pegando la línea completa de CLAVE-DE-FIRMA/secret.txt."; exit 1
+            fi
             echo "Usando la clave del secret CELUFACIL_CLAVE."
           elif [ -n "$KEYSTORE_BASE64" ]; then
             printf '%s' "$KEYSTORE_BASE64" | base64 -d > clave/release.keystore
