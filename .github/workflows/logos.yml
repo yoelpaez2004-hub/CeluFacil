@@ -1,0 +1,30 @@
+name: Descargar imágenes de marcas
+
+# Botón manual: baja de Wikimedia Commons el logo de cada marca (solo archivos con licencia libre), como PNG de 320 px
+# con fondo transparente, y guarda los créditos (autor, licencia, fuente) que la app muestra en Mi taller → Acerca de.
+on:
+  workflow_dispatch:
+    inputs:
+      marcas:
+        description: "Marcas separadas por espacio (ej. Samsung LG). Vacío = todas."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  logos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Descargar desde Wikimedia Commons
+        run: node scripts/descargar-logos.mjs ${{ github.event.inputs.marcas }}
+      - name: Guardar en el repo
+        run: |
+          git config user.name "celufacil-bot"
+          git config user.email "bot@celufacil.local"
+          git add www/marcas
+          git diff --cached --quiet && echo "Sin cambios" || (git commit -m "imágenes de marcas desde Wikimedia Commons" && git push)

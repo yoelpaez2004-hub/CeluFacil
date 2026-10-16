@@ -1,0 +1,103 @@
+name: Compilar APK
+
+# Un solo botón: prueba la app, baja las imágenes de marcas si faltan, compila y firma el APK y lo publica en Releases.
+# Corre solo con cada cambio en main y a mano desde la pestaña Actions.
+on:
+  push:
+    branches: [ main ]
+    paths-ignore: [ 'www/precios-ml.json', 'README.md' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # para contar commits (versionCode)
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 17 }
+
+      - name: Dependencias
+        run: |
+          pip3 install --quiet pillow
+          npm install --no-audit --no-fund
+
+      - name: Probar la app (si falla, no se compila)
+        run: npm test
+
+      - name: Imágenes de marcas desde Wikimedia Commons (solo si faltan)
+        if: hashFiles('www/marcas/creditos.json') == ''
+        continue-on-error: true
+        run: node scripts/descargar-logos.mjs
+
+      - name: Clave de firma
+        id: clave
+        env:
+          CELUFACIL_CLAVE: ${{ secrets.CELUFACIL_CLAVE }}
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          mkdir -p clave
+          if [ -n "$CELUFACIL_CLAVE" ]; then
+            printf '%s' "${CELUFACIL_CLAVE%%:*}" > clave/password.txt
+            printf '%s' "${CELUFACIL_CLAVE#*:}" | base64 -d > clave/release.keystore
+            echo "Usando la clave del secret CELUFACIL_CLAVE."
+          elif [ -n "$KEYSTORE_BASE64" ]; then
+            printf '%s' "$KEYSTORE_BASE64" | base64 -d > clave/release.keystore
+            printf '%s' "$KEYSTORE_PASSWORD" > clave/password.txt
+            echo "Usando la clave de los secrets KEYSTORE_*."
+          else
+            echo "nueva=true" >> "$GITHUB_OUTPUT"
+            echo "::warning::No hay clave de firma en los secrets: se genera una nueva. Descargá el artefacto CLAVE-DE-FIRMA-GUARDAR y cargá el secret CELUFACIL_CLAVE (ver LEEME.txt); si no, la próxima versión no se podrá instalar sobre esta."
+          fi
+
+      - name: Compilar y firmar
+        id: build
+        run: |
+          VERSION_CODE=$(git rev-list --count HEAD) bash scripts/build-apk-directo.sh
+          V=$(node -p "require('./package.json').version")
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          if git rev-parse "v$V" >/dev/null 2>&1; then echo "nueva=false" >> "$GITHUB_OUTPUT"; else echo "nueva=true" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Subir la clave generada (solo la primera vez)
+        if: steps.clave.outputs.nueva == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: CLAVE-DE-FIRMA-GUARDAR
+          path: clave/
+          retention-days: 90
+
+      - name: Subir APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: CeluFacil-APK
+          path: dist/CeluFacil-${{ steps.build.outputs.version }}.apk
+
+      - name: Versión de escritorio para Windows (CeluFacil.exe)
+        run: bash scripts/build-exe.sh
+
+      - name: Subir versión de Windows
+        uses: actions/upload-artifact@v4
+        with:
+          name: CeluFacil-Windows
+          path: dist/CeluFacil-${{ steps.build.outputs.version }}-windows.zip
+
+      - name: Publicar Release (si la versión es nueva)
+        if: steps.build.outputs.nueva == 'true' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.build.outputs.version }}
+          name: Celu Fácil ${{ steps.build.outputs.version }}
+          body: |
+            Celu Fácil ${{ steps.build.outputs.version }}: APK firmado para Android (instalalo sobre la versión anterior, los datos se conservan) y versión de escritorio para Windows 10/11 (descomprimir y abrir CeluFacil.exe).
+          files: |
+            dist/CeluFacil-${{ steps.build.outputs.version }}.apk
+            dist/CeluFacil-${{ steps.build.outputs.version }}-windows.zip

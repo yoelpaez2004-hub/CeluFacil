@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f7d86">
+<title>Celu Fácil</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-row">
+    <button class="ib hidden" id="back" onclick="volver()" aria-label="Volver"></button>
+    <div class="search" onclick="document.getElementById('q').focus()">
+      <span id="search-ico"></span>
+      <input id="q" type="search" placeholder="Buscar falla, modelo o marca" autocomplete="off">
+      <button class="ib sm hidden" id="q-clear" onclick="limpiarBusqueda()" aria-label="Limpiar"></button>
+    </div>
+    <button class="ib cart" onclick="go('carrito')" aria-label="Presupuesto"><span id="cart-ico"></span><b id="cart-n" class="hidden">0</b></button>
+  </div>
+  <div class="crumbs" id="crumbs"></div>
+</header>
+
+<main id="app">
+
+  <!-- INICIO -->
+  <section data-screen="inicio" class="screen active">
+    <div id="update-banner" class="update hidden"></div>
+    <div id="backup-banner" class="update warn hidden"></div>
+
+    <div class="hero">
+      <div class="hero-txt"><small id="hero-taller">Celu Fácil</small><h2>¿Qué le pasa al celu?</h2><p>Elegí la marca y el modelo. Te mostramos la falla probable, el repuesto al precio de Mercado Libre y la mano de obra.</p></div>
+      <div class="hero-ico" id="hero-ico"></div>
+    </div>
+
+    <div class="sec-h"><h3>¿Qué falla tiene?</h3></div>
+    <div class="cats" id="categorias"></div>
+
+    <div class="sec-h"><h3>Fallas más consultadas</h3><button class="lnk" onclick="go('buscar')">Ver todas</button></div>
+    <div class="rail" id="populares"></div>
+
+    <div class="sec-h"><h3>Buscar por marca</h3><button class="lnk" id="mas-marcas" onclick="toggleMarcas()">Otras marcas</button></div>
+    <div class="brands" id="marcas"></div>
+
+    <div class="sec-h"><h3>Mi taller</h3><button class="lnk" onclick="go('ordenes')">Ver órdenes</button></div>
+    <div id="avisos" class="avisos hidden"></div>
+    <button class="compras-card hidden" id="compras-card" onclick="go('compras')"></button>
+    <div class="quick">
+      <button class="qk" onclick="go('ordenes', true, {est:'Activas'})"><span class="qk-ic blue" id="qk-ord"></span><div><b id="ord-count">0</b><small>órdenes activas</small></div></button>
+      <button class="qk" onclick="go('ordenes', true, {est:'Listo'})"><span class="qk-ic green" id="qk-listo"></span><div><b id="listo-count">0</b><small>listas p/ entregar</small></div></button>
+      <button class="qk" onclick="go('ordenes', true, {est:'Entregado'})"><span class="qk-ic yellow" id="qk-gan"></span><div><b id="ganancia-mes">$0</b><small>ganancia del mes</small></div></button>
+      <button class="qk" onclick="go('ordenes', true, {est:'Activas'})"><span class="qk-ic gray" id="qk-cobrar"></span><div><b id="porcobrar">$0</b><small>por cobrar</small></div></button>
+    </div>
+  </section>
+
+  <!-- MODELOS -->
+  <section data-screen="modelos" class="screen">
+    <div class="list-head"><div><h2 id="marca-title"></h2><span class="muted" id="marca-count"></span></div></div>
+    <div class="chips" id="gama-filter"></div>
+    <div id="modelos" class="vlist"></div>
+  </section>
+
+  <!-- FALLAS -->
+  <section data-screen="fallas" class="screen">
+    <div class="list-head"><div><h2 id="fallas-title">Fallas</h2><span class="muted" id="fallas-sub"></span></div></div>
+    <div class="chips" id="cat-filter"></div>
+    <div id="fallas" class="pgrid"></div>
+  </section>
+
+  <!-- DETALLE -->
+  <section data-screen="detalle" class="screen"><div id="detalle"></div></section>
+
+  <!-- PRESUPUESTO -->
+  <section data-screen="carrito" class="screen">
+    <div class="doc">
+      <div class="doc-head">
+        <div><small>Presupuesto</small><h2 id="doc-num">N° 0001</h2></div>
+        <div class="doc-taller"><b id="doc-taller">Celu Fácil</b><small id="doc-fecha"></small></div>
+      </div>
+      <div class="doc-eq" id="pres-equipo"></div>
+      <div class="doc-rows" id="pres-items"></div>
+      <button class="doc-add" onclick="toggleAdd()"><span id="add-ico"></span> Agregar repuesto o servicio</button>
+      <div class="add-row hidden" id="add-row">
+        <input id="item-desc" placeholder="Descripción">
+        <input id="item-precio" type="number" inputmode="numeric" placeholder="$ cobrás">
+        <button class="btn sm primary" onclick="agregarItem()">OK</button>
+      </div>
+      <div class="doc-tot">
+        <div><span>Repuestos</span><b id="t-rep">$0</b></div>
+        <div><span>Mano de obra</span><b id="t-mo">$0</b></div>
+        <div class="big"><span>Total</span><b id="t-total">$0</b></div>
+        <div class="sena"><span>Seña</span><input id="pres-sena" type="number" inputmode="numeric" placeholder="$0" oninput="calcTotales()"></div>
+        <div class="resta hidden" id="t-resta-row"><span>Resta al retirar</span><b id="t-resta">$0</b></div>
+        <div class="gan hidden" id="t-gan-row"><span>Tu ganancia estimada</span><b id="t-gan">$0</b></div>
+      </div>
+      <div class="doc-foot"><span id="doc-gar"></span><span id="doc-tel"></span></div>
+    </div>
+    <button class="btn primary full" onclick="crearOrdenDesdePresupuesto()">Ingresar equipo</button>
+    <div class="two">
+      <button class="btn" onclick="compartirPresupuesto()"><span data-ico="whatsapp"></span> Enviar texto</button>
+      <button class="btn" onclick="compartirPresupuestoImagen()"><span data-ico="camera"></span> Enviar imagen</button>
+    </div>
+    <button class="btn link full" onclick="vaciarPresupuesto()">Vaciar presupuesto</button>
+  </section>
+
+  <!-- ÓRDENES -->
+  <section data-screen="ordenes" class="screen">
+    <div class="list-head"><h2>Órdenes</h2><div class="two" style="flex:0 0 auto"><button class="btn sm" onclick="go('compras')"><span data-ico="box"></span> Compras</button><button class="btn sm primary" onclick="nuevaOrden()">+ Nueva</button></div></div>
+    <div class="chips" id="estado-filter"></div>
+    <div id="ordenes" class="vlist"></div>
+  </section>
+
+  <!-- COMPRAS -->
+  <section data-screen="compras" class="screen">
+    <div class="list-head"><div><h2>Compras</h2><span class="muted" id="compras-sub"></span></div></div>
+    <div id="compras" class="vlist"></div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section data-screen="clientes" class="screen">
+    <div class="list-head"><div><h2>Clientes</h2><span class="muted" id="clientes-sub"></span></div></div>
+    <input id="cli-q" type="search" placeholder="Buscar por nombre o teléfono" autocomplete="off" style="margin:0 0 10px">
+    <div id="clientes" class="vlist"></div>
+  </section>
+  <section data-screen="cliente" class="screen">
+    <div class="card" id="cliente-head"></div>
+    <div class="sec-h" style="margin-top:4px"><h3>Reparaciones</h3></div>
+    <div id="cliente-ordenes" class="vlist"></div>
+  </section>
+
+  <!-- AJUSTES -->
+  <section data-screen="ajustes" class="screen">
+    <h2 class="pg">Mi taller</h2>
+    <div class="card">
+      <label>Nombre del taller <input id="cfg-nombre" placeholder="Ej: SuperCell La Matanza"></label>
+      <label>Teléfono / WhatsApp <input id="cfg-tel" placeholder="11 2345 6789"></label>
+      <div class="two">
+        <label>Dirección del taller <input id="cfg-direccion" placeholder="Ej: Barragán Bastilla 6662"></label>
+        <label>Localidad (solo para el mapa) <input id="cfg-localidad" placeholder="Ej: La Matanza, Buenos Aires"></label>
+      </div>
+      <label>Horario de retiro <input id="cfg-horario" placeholder="Ej: de lunes a sábado de 10 a 19"></label>
+      <div class="two">
+        <label>Garantía (días) <input id="cfg-gar" type="number" inputmode="numeric" value="30"></label>
+        <label>Recargo repuestos % <input id="cfg-recargo" type="number" inputmode="numeric" value="20"></label>
+      </div>
+      <small class="muted">El recargo es lo que ganás sobre el costo del repuesto. La mano de obra se ajusta abajo, por tipo de trabajo.</small>
+      <button class="btn primary full" onclick="guardarConfig()">Guardar</button>
+    </div>
+
+    <div class="card">
+      <div class="list-head" style="margin-bottom:4px"><h3>Mano de obra por tipo de trabajo</h3><button class="lnk" onclick="restablecerPrecios()">Restablecer</button></div>
+      <small class="muted">Precio para gama baja. Media ×1.3 · Alta ×1.7 · iPhone +25%.</small>
+      <div id="precios" class="vlist" style="margin-top:10px"></div>
+    </div>
+
+    <div class="card">
+      <div class="list-head" style="margin-bottom:4px"><h3>Marcas y modelos propios</h3><button class="lnk" onclick="nuevaMarca()">+ Nueva marca</button></div>
+      <small class="muted">Lo que no está en la lista de la app: agregá el modelo desde la pantalla de modelos de su marca, o creá una marca nueva acá.</small>
+      <div id="marcas-propias" class="vlist" style="margin-top:10px"></div>
+    </div>
+
+    <div class="card">
+      <h3>Imágenes de marcas</h3>
+      <small class="muted">Cargá una imagen por marca (PNG con fondo transparente queda mejor). Se muestra en Inicio en lugar del monograma. También podés poner archivos en la carpeta <code>www/marcas/</code> del proyecto, por ejemplo <code>samsung.png</code>.</small>
+      <div id="logos" class="vlist" style="margin-top:10px"></div>
+      <input type="file" id="logo-input" accept="image/*" hidden onchange="logoDesdeInput(event)">
+    </div>
+    <div class="card">
+      <h3>Respaldo de datos</h3>
+      <p class="muted" id="respaldo-estado"></p>
+      <div class="two">
+        <button class="btn" onclick="exportar()">Exportar / compartir</button>
+        <button class="btn" onclick="document.getElementById('imp').click()">Importar</button>
+      </div>
+      <input type="file" id="imp" accept=".json,application/json" hidden onchange="importar(event)">
+      <button class="btn link full danger" onclick="borrarTodo()">Borrar todos los datos</button>
+    </div>
+
+    <div class="card">
+      <h3>Precios de Mercado Libre</h3>
+      <p class="muted" id="ml-estado"></p>
+      <label>URL del archivo de precios <input id="cfg-url" placeholder="https://raw.githubusercontent.com/usuario/CeluFacil/main/www/precios-ml.json"></label>
+      <div class="two">
+        <button class="btn" onclick="cargarPreciosML(true)">Actualizar ahora</button>
+        <button class="btn" onclick="guardarConfig()">Guardar URL</button>
+      </div>
+      <small class="muted">Un robot en GitHub lee Mercado Libre todos los días y publica este archivo con el precio exacto de cada repuesto por modelo, en tres niveles de calidad y con envío. La app lo descarga al abrir. Sin él, usa valores de referencia y lo que vos cargás.</small>
+      <p class="muted" id="excl-estado" style="margin-top:10px"></p>
+    </div>
+
+    <div class="card">
+      <h3>Acerca de</h3>
+      <p class="muted" id="app-version"></p>
+      <button class="btn full" onclick="buscarActualizacion(true)">Buscar actualización</button>
+      <h4 class="sub-h">Créditos de imágenes y marcas</h4>
+      <div id="creditos"></div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="tabs">
+  <button class="tab active" data-go="inicio"><span data-ico="home"></span><span>Inicio</span></button>
+  <button class="tab" data-go="carrito"><span data-ico="receipt"></span><span>Presupuesto</span></button>
+  <button class="tab" data-go="ordenes"><span data-ico="orders"></span><span>Órdenes</span></button>
+  <button class="tab" data-go="clientes"><span data-ico="user"></span><span>Clientes</span></button>
+  <button class="tab" data-go="ajustes"><span data-ico="store"></span><span>Mi taller</span></button>
+</nav>
+
+<!-- Modal de orden -->
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <div class="list-head"><h2 id="modal-title">Nueva orden</h2><button class="ib" onclick="cerrarModal()" id="modal-x" aria-label="Cerrar"></button></div>
+    <input type="hidden" id="o-id">
+    <div class="two">
+      <label>Cliente <input id="o-cliente" placeholder="Nombre"></label>
+      <label>WhatsApp <input id="o-tel" type="tel" placeholder="11 2345 6789"></label>
+    </div>
+    <p class="cliente-info hidden" id="o-cliente-info"></p>
+    <div class="two">
+      <label>Marca <input id="o-marca" list="dl-marcas"></label>
+      <label>Modelo <input id="o-modelo"></label>
+    </div>
+    <datalist id="dl-marcas"></datalist>
+    <label>Falla / trabajo <textarea id="o-falla" rows="2"></textarea></label>
+    <label>Estado</label>
+    <div class="chips estado-chips" id="o-estado"></div>
+    <label>Estado del equipo al recibirlo</label>
+    <div class="chips wrap" id="o-recibido"></div>
+    <label>Fotos del equipo</label>
+    <div class="fotos" id="o-fotos"></div>
+    <input type="file" id="foto-input" accept="image/*" capture="environment" hidden onchange="fotoDesdeInput(event)">
+    <label>Patrón / PIN (para probarlo) <input id="o-pin"></label>
+    <div class="three">
+      <label>Total $ <input id="o-total" type="number" inputmode="numeric"></label>
+      <label>Seña $ <input id="o-sena" type="number" inputmode="numeric"></label>
+      <label>Costo rep. $ <input id="o-costo" type="number" inputmode="numeric"></label>
+    </div>
+    <label>Notas <textarea id="o-notas" rows="2" placeholder="Accesorios, observaciones, acuerdos con el cliente..."></textarea></label>
+    <button class="btn primary full" onclick="guardarOrden()">Guardar</button>
+    <div class="two">
+      <button class="btn" onclick="avisarDesdeModal()">Avisar estado</button>
+      <button class="btn" onclick="compartirOrden()">Comprobante</button>
+    </div>
+    <button class="btn link full danger hidden" id="o-del" onclick="eliminarOrden()">Eliminar orden</button>
+  </div>
+</div>
+
+<!-- Diálogo propio -->
+<div id="dlg" class="modal dlg hidden">
+  <div class="dlg-box">
+    <h3 id="dlg-title"></h3>
+    <p id="dlg-msg"></p>
+    <input id="dlg-input" class="hidden">
+    <div class="two">
+      <button class="btn" id="dlg-cancel">Cancelar</button>
+      <button class="btn primary" id="dlg-ok">Aceptar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="data.js"></script>
+<script src="icons.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

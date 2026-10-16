@@ -1,0 +1,56 @@
+name: Actualizar precios de Mercado Libre
+
+# Corre todos los días a las 06:17 (hora Argentina) y a mano desde la pestaña Actions.
+# No necesita credenciales: lee la página pública de resultados de Mercado Libre. Si cargás los secrets de la API
+# oficial (ML_CLIENT_ID + ML_CLIENT_SECRET, opcional ML_REFRESH_TOKEN, o ML_ACCESS_TOKEN) usa la API, que es más estable.
+on:
+  schedule:
+    - cron: "17 9 * * *"
+  workflow_dispatch:
+    inputs:
+      solo:
+        description: "Solo modelos que contengan este texto (ej. Galaxy A05). Vacío = todos."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  actions: write   # para volver a publicar la web con los precios nuevos
+
+concurrency:
+  group: precios
+  cancel-in-progress: false
+
+jobs:
+  precios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      - name: Consultar Mercado Libre
+        env:
+          ML_CLIENT_ID: ${{ secrets.ML_CLIENT_ID }}
+          ML_CLIENT_SECRET: ${{ secrets.ML_CLIENT_SECRET }}
+          ML_REFRESH_TOKEN: ${{ secrets.ML_REFRESH_TOKEN }}
+          ML_ACCESS_TOKEN: ${{ secrets.ML_ACCESS_TOKEN }}
+          SOLO: ${{ github.event.inputs.solo }}
+        run: |
+          # Módulo, batería y pin todos los días; cámara, tapa y flex de encendido los domingos (menos pedidos a Mercado Libre)
+          if [ -n "$SOLO" ]; then node scripts/actualizar-precios.mjs --solo "$SOLO"; else node scripts/actualizar-precios.mjs --rotacion; fi
+
+      - name: Publicar precios en el repo
+        id: publicar
+        run: |
+          git config user.name "celufacil-bot"
+          git config user.email "bot@celufacil.local"
+          git add www/precios-ml.json
+          if git diff --cached --quiet; then echo "Sin cambios"; echo "cambio=false" >> "$GITHUB_OUTPUT"; else git commit -m "precios ML $(date -u +%F)" && git push && echo "cambio=true" >> "$GITHUB_OUTPUT"; fi
+
+      # Los pushes del bot no disparan otros workflows (regla de GitHub), así que la web se vuelve a publicar a mano acá
+      - name: Volver a publicar la web con los precios nuevos
+        if: steps.publicar.outputs.cambio == 'true'
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: gh workflow run web.yml --ref main || echo "::warning::No se pudo lanzar 'Publicar web' (¿Pages sin activar?). La web igual toma los precios nuevos desde GitHub al abrirse."

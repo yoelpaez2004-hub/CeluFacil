@@ -1,0 +1,24 @@
+{
+  "name": "celufacil",
+  "version": "2.1.1",
+  "private": true,
+  "description": "Celu Fácil — diagnóstico, presupuesto y órdenes para talleres de reparación de celulares",
+  "scripts": {
+    "test": "node tests/app.test.mjs && node tests/web.test.mjs",
+    "apk": "bash scripts/build-apk-directo.sh",
+    "logos": "node scripts/descargar-logos.mjs",
+    "precios": "node scripts/actualizar-precios.mjs",
+    "bundle": "node scripts/bundle.mjs",
+    "bundle:demo": "node scripts/bundle.mjs --demo",
+    "version:sync": "node scripts/version-sync.mjs",
+    "bundle:real": "node scripts/bundle.mjs --real",
+    "exe": "bash scripts/build-exe.sh",
+    "web": "node scripts/build-web.mjs",
+    "modelos": "node scripts/descargar-modelos.mjs"
+  },
+  "devDependencies": {
+    "@neutralinojs/neu": "^11.8.0",
+    "jsdom": "^25.0.1",
+    "resedit": "^3.1.0"
+  }
+}

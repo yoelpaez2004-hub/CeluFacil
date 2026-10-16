@@ -1,0 +1,37 @@
+name: Descargar fotos de modelos
+
+# Botón manual: baja de Wikimedia Commons una foto de cada modelo de celular (solo archivos con licencia libre)
+# a www/modelos/ y guarda los créditos en www/modelos/index.json. La web para clientes las muestra en la lista
+# de modelos; los que no tienen foto quedan con una silueta. Tarda unos 10 minutos la primera vez.
+on:
+  workflow_dispatch:
+    inputs:
+      marcas:
+        description: "Marcas separadas por espacio (ej. Samsung Xiaomi). Vacío = todas."
+        required: false
+        default: ""
+      solo_faltantes:
+        description: "Buscar solo los modelos que todavía no tienen foto"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  modelos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Descargar desde Wikimedia Commons
+        run: node scripts/descargar-modelos.mjs ${{ github.event.inputs.marcas }} ${{ github.event.inputs.solo_faltantes == 'true' && '--faltantes' || '' }}
+      - name: Guardar en el repo
+        run: |
+          git config user.name "celufacil-bot"
+          git config user.email "bot@celufacil.local"
+          git add www/modelos
+          git diff --cached --quiet && echo "Sin cambios" || (git commit -m "fotos de modelos desde Wikimedia Commons" && git push && gh workflow run web.yml --ref main)
+        env: { GH_TOKEN: "${{ github.token }}" }

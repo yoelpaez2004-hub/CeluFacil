@@ -1,0 +1,246 @@
+{
+  "aviso": "Los nombres y logos de las marcas son marcas registradas de sus respectivos dueños y se muestran solo para indicar qué equipos repara el taller. Imágenes obtenidas de Wikimedia Commons con las licencias indicadas.",
+  "imagenes": {
+    "Alcatel": {
+      "archivo": "alcatel.png",
+      "titulo": "Alcatel logo 2016.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Alcatel_logo_2016.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Alcatel",
+      "credito": "[1][2]",
+      "descargado": "2026-10-16"
+    },
+    "BGH": {
+      "archivo": "bgh.png",
+      "titulo": "Logo de BGH.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Logo_de_BGH.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "BGH",
+      "credito": "SVG based on this image. This W3C-unspecified vector image was created with Inkscape .",
+      "descargado": "2026-10-16"
+    },
+    "BLU": {
+      "archivo": "blu.png",
+      "titulo": "BLU LOGO(170x170).png",
+      "fuente": "https://commons.wikimedia.org/wiki/File:BLU_LOGO(170x170).png",
+      "licencia": "CC BY-SA 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "autor": "CT-Miami",
+      "credito": "Own work",
+      "descargado": "2026-10-16"
+    },
+    "Huawei": {
+      "archivo": "huawei.png",
+      "titulo": "Huawei wordmark 2019.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Huawei_wordmark_2019.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Huawei",
+      "credito": "https://www.huawei.com/minisite/russia/annualreport2018rus/materials/annual_report_2018_en_v2.pdf",
+      "descargado": "2026-10-16"
+    },
+    "LG": {
+      "archivo": "lg.png",
+      "titulo": "LG logo (2015).svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:LG_logo_(2014).svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "LG Corporation",
+      "credito": "https://www.lg.com https://www.lg.com/content/dam/lge/global/our-brand/src/mocks/bs0002/brand-elements-logo-primary-d.svg",
+      "descargado": "2026-10-16"
+    },
+    "Motorola": {
+      "archivo": "motorola.png",
+      "titulo": "Motorola logo.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Motorola_logo.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Motorola Mobility LLC.",
+      "credito": "Based in a file in brandsoftheworld.com.",
+      "descargado": "2026-10-16"
+    },
+    "Noblex": {
+      "archivo": "noblex.png",
+      "titulo": "NOBLEX.png",
+      "fuente": "https://commons.wikimedia.org/wiki/File:NOBLEX.png",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Autor desconocido",
+      "credito": "Own work",
+      "descargado": "2026-10-16"
+    },
+    "Nokia": {
+      "archivo": "nokia.png",
+      "titulo": "Nokia wordmark.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Nokia_wordmark.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Nokia Corporation",
+      "credito": "Nokia Corporation",
+      "descargado": "2026-10-16"
+    },
+    "Realme": {
+      "archivo": "realme.png",
+      "titulo": "Realme logo.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Realme_logo.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Desconocido",
+      "credito": "SVG entnommen aus https://www.realme.com/eu/",
+      "descargado": "2026-10-16"
+    },
+    "Samsung": {
+      "archivo": "samsung.png",
+      "titulo": "Samsung wordmark.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Samsung",
+      "credito": "https://www.samsung.com/us/about-us/brand-identity/logo/",
+      "descargado": "2026-10-16"
+    },
+    "Sony": {
+      "archivo": "sony.png",
+      "titulo": "Sony logo.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Sony_logo.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Yasuo Kuroki, Sony",
+      "credito": "Sonyrtyyh Group Corporation",
+      "descargado": "2026-10-16"
+    },
+    "TCL": {
+      "archivo": "tcl.png",
+      "titulo": "Logo of the TCL Corporation.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Logo_of_the_TCL_Corporation.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "TCL Electronics",
+      "credito": "Vektordaten: http://electronics.tcl.com/en/global/home.php Farbinfo: http://www.tcl.com/main/template/3933/images/Cn_Logo.jpg",
+      "descargado": "2026-10-16"
+    },
+    "Xiaomi": {
+      "archivo": "xiaomi.png",
+      "titulo": "Xiaomi logo (2021-).svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Xiaomi_logo_(2021-).svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Xiaomi",
+      "credito": "https://www.mi.com/global/",
+      "descargado": "2026-10-16"
+    },
+    "ZTE": {
+      "archivo": "zte.png",
+      "titulo": "ZTE logo.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:ZTE_logo.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "ZTE Com, Ltd",
+      "credito": "www.zte.com",
+      "descargado": "2026-10-16"
+    },
+    "iPhone": {
+      "archivo": "iphone.png",
+      "titulo": "Apple logo black.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Apple_logo_black.svg",
+      "licencia": "Public domain",
+      "licenciaUrl": "",
+      "autor": "Original: Rob Janoff",
+      "credito": "Apple logo png",
+      "descargado": "2026-10-16"
+    }
+  },
+  "aviso_iconos": "Los íconos de las categorías de falla son de Font Awesome Free 5 (CC BY 4.0), obtenidos de Wikimedia Commons y coloreados para la app.",
+  "iconos": {
+    "audio": {
+      "archivo": "audio.png",
+      "categoria": "Sonido / Micrófono",
+      "titulo": "Font Awesome 5 solid volume-up.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_volume-up.svg",
+      "licencia": "CC BY 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/4.0",
+      "autor": "Font Awesome",
+      "credito": "Font Awesome Free 5 (fontawesome.com), coloreado para la app",
+      "descargado": "2026-10-16"
+    },
+    "bateria": {
+      "archivo": "bateria.png",
+      "categoria": "Batería / Energía",
+      "titulo": "Font Awesome 5 solid battery-half.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_battery-half.svg",
+      "licencia": "CC BY 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/4.0",
+      "autor": "Font Awesome",
+      "credito": "Font Awesome Free 5 (fontawesome.com), coloreado para la app",
+      "descargado": "2026-10-16"
+    },
+    "camara": {
+      "archivo": "camara.png",
+      "categoria": "Cámara",
+      "titulo": "Font Awesome 5 solid camera.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_camera.svg",
+      "licencia": "CC BY 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/4.0",
+      "autor": "Font Awesome",
+      "credito": "Font Awesome Free 5 (fontawesome.com), coloreado para la app",
+      "descargado": "2026-10-16"
+    },
+    "carga": {
+      "archivo": "carga.png",
+      "categoria": "Carga / Conector",
+      "titulo": "Font Awesome 5 solid plug.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_plug.svg",
+      "licencia": "CC BY 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/4.0",
+      "autor": "Font Awesome",
+      "credito": "Font Awesome Free 5 (fontawesome.com), coloreado para la app",
+      "descargado": "2026-10-16"
+    },
+    "fisico": {
+      "archivo": "fisico.png",
+      "categoria": "Golpes / Agua / Botones",
+      "titulo": "Font Awesome 5 solid tint.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_tint.svg",
+      "licencia": "CC BY 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/4.0",
+      "autor": "Font Awesome",
+      "credito": "Font Awesome Free 5 (fontawesome.com), coloreado para la app",
+      "descargado": "2026-10-16"
+    },
+    "pantalla": {
+      "archivo": "pantalla.png",
+      "categoria": "Pantalla / Táctil",
+      "titulo": "Font Awesome 5 solid mobile-alt.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_mobile-alt.svg",
+      "licencia": "CC BY 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/4.0",
+      "autor": "Font Awesome",
+      "credito": "Font Awesome Free 5 (fontawesome.com), coloreado para la app",
+      "descargado": "2026-10-16"
+    },
+    "red": {
+      "archivo": "red.png",
+      "categoria": "Señal / WiFi / Bluetooth",
+      "titulo": "Font Awesome 5 solid wifi.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_wifi.svg",
+      "licencia": "CC BY 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/4.0",
+      "autor": "Font Awesome",
+      "credito": "Font Awesome Free 5 (fontawesome.com), coloreado para la app",
+      "descargado": "2026-10-16"
+    },
+    "software": {
+      "archivo": "software.png",
+      "categoria": "Software / Bloqueos",
+      "titulo": "Font Awesome 5 solid microchip.svg",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_microchip.svg",
+      "licencia": "CC BY 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/4.0",
+      "autor": "Font Awesome",
+      "credito": "Font Awesome Free 5 (fontawesome.com), coloreado para la app",
+      "descargado": "2026-10-16"
+    }
+  }
+}

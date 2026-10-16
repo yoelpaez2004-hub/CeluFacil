@@ -1,0 +1,10 @@
+Imágenes de marcas para la pantalla de Inicio.
+
+Opción automática: `npm run logos` (o el workflow "Descargar imágenes de marcas" en GitHub). Busca en Wikimedia Commons
+el logo de cada marca, acepta solo archivos con licencia libre, baja el PNG de 320 px con fondo transparente y escribe
+creditos.json (autor, licencia, fuente), que la app muestra en Mi taller → Acerca de.
+
+Opción manual: un archivo por marca, en minúsculas y sin acentos, con extensión .png:
+  samsung.png  motorola.png  xiaomi.png  iphone.png  tcl.png  zte.png  realme.png  huawei.png
+  nokia.png    alcatel.png   noblex.png  lg.png      sony.png bgh.png  blu.png
+Si falta el archivo, la app muestra el monograma. Las imágenes cargadas desde la app (Mi taller) tienen prioridad.

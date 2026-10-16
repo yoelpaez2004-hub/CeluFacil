@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f7d86">
+<title>SuperCell La Matanza — Reparación de celulares con precio al instante</title>
+<meta name="description" content="Elegí la marca, el modelo y la falla de tu celular y conocé el precio estimado del arreglo. Pantallas, baterías, pin de carga y más, con garantía. Barragán Bastilla 6662, La Matanza.">
+<meta property="og:title" content="SuperCell La Matanza — Reparación de celulares">
+<meta property="og:description" content="Sabé cuánto sale arreglar tu celu antes de salir de tu casa.">
+<meta property="og:image" content="__URL_BASE__icon-512.png">
+<link rel="canonical" href="__URL_BASE__">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#cotizador">Ir al cotizador</a>
+
+<header class="top">
+  <a class="brand" href="#"><img src="icon-192.png" alt="" width="36" height="36"><span class="brand-name" id="brand-name">SuperCell La Matanza</span></a>
+  <nav class="top-nav">
+    <a href="#cotizador">Precio</a>
+    <a href="#como">Cómo trabajamos</a>
+    <a href="#donde">Dónde estamos</a>
+  </nav>
+  <a class="btn btn-wa top-wa" id="top-wa" href="#" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+</header>
+
+<main>
+
+<!-- HERO = COTIZADOR -->
+<section class="hero" id="cotizador">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker">Reparación de celulares en La Matanza</p>
+        <h1 class="bordered">¿Cuánto sale<br>arreglar tu celu?</h1>
+        <p class="hero-sub">Elegí la marca, el modelo y qué le pasa. Te mostramos el precio estimado con repuesto y mano de obra, y lo confirmás por WhatsApp.</p>
+      <svg class="hero-art" width="260" height="230" viewBox="0 0 260 230" fill="none" aria-hidden="true">
+        <rect x="70" y="10" width="120" height="210" rx="22" fill="#06343a" stroke="#fff" stroke-width="4"/>
+        <rect x="82" y="26" width="96" height="178" rx="12" fill="#0e7c86"/>
+        <path d="M100 26l22 40-14 22 26 36-10 30 20 50" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+        <path d="M122 66l18-8M108 88l-14 6M134 124l16-10M124 154l-16 8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+        <rect x="112" y="14" width="36" height="6" rx="3" fill="#0e7c86"/>
+        <g transform="rotate(-8 205 60)">
+          <rect x="160" y="40" width="92" height="44" rx="10" fill="#ffb547" stroke="#06343a" stroke-width="4"/>
+          <text x="206" y="69" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="700" font-size="20" fill="#3a2a08">$ hoy</text>
+        </g>
+        <g transform="rotate(6 40 160)">
+          <rect x="4" y="138" width="88" height="44" rx="10" fill="#fff" stroke="#06343a" stroke-width="4"/>
+          <text x="48" y="167" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="700" font-size="17" fill="#06343a">30 días</text>
+        </g>
+      </svg>
+      </div>
+
+    <div class="quote" id="quote" role="region" aria-label="Cotizador">
+      <ol class="steps" id="steps">
+        <li class="step done" data-step="1"><span>1</span><b>Marca</b></li>
+        <li class="step" data-step="2"><span>2</span><b>Modelo</b></li>
+        <li class="step" data-step="3"><span>3</span><b>Falla</b></li>
+        <li class="step" data-step="4"><span>4</span><b>Precio</b></li>
+      </ol>
+
+      <div class="panel" id="p-marca">
+        <div class="brands" id="brands"></div>
+        <button class="lnk" id="more-brands" type="button">Ver todas las marcas</button>
+      </div>
+
+      <div class="panel hidden" id="p-modelo">
+        <div class="panel-head"><button class="back" type="button" data-back="1">‹ Marca</button><h2 id="t-modelo">Modelo</h2></div>
+        <label class="sr" for="q-modelo">Buscar modelo</label>
+        <input class="search" id="q-modelo" type="search" placeholder="Buscá tu modelo (ej. A05, Moto G23)" autocomplete="off" enterkeyhint="search">
+        <div class="models" id="models"></div>
+        <p class="hint">¿No está tu modelo? <a href="#" id="wa-modelo" target="_blank" rel="noopener">Consultanos por WhatsApp</a>, igual lo arreglamos.</p>
+      </div>
+
+      <div class="panel hidden" id="p-falla">
+        <div class="panel-head"><button class="back" type="button" data-back="2">‹ Modelo</button><h2 id="t-falla">¿Qué le pasa?</h2></div>
+        <div id="f-cats">
+          <label class="sr" for="q-falla">Buscar falla</label>
+          <input class="search" id="q-falla" type="search" placeholder="Escribí el síntoma: no carga, se rompió la pantalla…" autocomplete="off" enterkeyhint="search">
+          <div class="cats" id="cats"></div>
+          <div class="faults hidden" id="faults-search"></div>
+        </div>
+        <div class="hidden" id="f-list">
+          <button class="back wide" type="button" id="back-cats">‹ Todas las fallas</button>
+          <div class="cat-title" id="cat-title"></div>
+          <div class="faults" id="faults"></div>
+        </div>
+      </div>
+
+      <div class="panel hidden" id="p-precio">
+        <div class="panel-head"><button class="back" type="button" data-back="3">‹ Falla</button><h2>Precio estimado</h2></div>
+        <div id="result" aria-live="polite"></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- LO MÁS PEDIDO -->
+<section class="sec sec-slim" id="servicios">
+  <div class="wrap">
+    <div class="slim-head"><h2 class="bordered dark">Lo que más arreglamos</h2><p>Precios de referencia para equipos de gama baja. Para el tuyo, usá el cotizador.</p></div>
+    <div class="services" id="services"></div>
+  </div>
+</section>
+
+<!-- CÓMO TRABAJAMOS -->
+<section class="sec sec-tint" id="como">
+  <div class="wrap">
+    <h2 class="bordered dark">Cómo trabajamos</h2>
+    <ol class="how">
+      <li><b>Nos escribís con el precio que viste acá.</b> Nos contás marca, modelo y falla; el estimado de la web ya lo tenemos.</li>
+      <li><b>Lo revisamos y te confirmamos.</b> Elegís el repuesto (económico, calidad original o premium) y cerramos el precio. Si al abrirlo aparece algo más, te avisamos antes de hacer nada.</li>
+      <li><b>Lo arreglamos y te avisamos por WhatsApp.</b> Pantalla y batería suelen salir el mismo día. Tus datos quedan en el celu: no formateamos salvo que el arreglo lo necesite.</li>
+      <li><b>Lo retirás con garantía.</b> <span id="gar-txt">30 días</span> sobre el repuesto y el trabajo realizado.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- PREGUNTAS -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <h2 class="bordered dark">Preguntas frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿El precio de la web es el precio final?</summary><p>Es un estimado muy cercano: usa el precio real del repuesto en Mercado Libre para tu modelo y nuestra mano de obra. Se confirma cuando vemos el equipo, porque a veces una falla esconde otra (por ejemplo, una pantalla rota con la batería hinchada).</p></details>
+      <details><summary>Se me mojó el celular, ¿qué hago?</summary><p>No lo cargues ni lo prendas, y no lo pongas en arroz. Traelo lo antes posible: la limpieza por líquido tarda 24–48 h y el presupuesto se arma después de abrirlo.</p></details>
+      <details><summary>¿Cuánto tarda?</summary><p>Pantalla, batería y pin de carga: en general el mismo día si tenemos el repuesto. Si hay que pedirlo, 2 a 5 días. Reparaciones de placa: de 1 a 3 días.</p></details>
+      <details><summary>¿Qué cubre la garantía?</summary><p><span class="gar-txt">30 días</span> sobre el repuesto colocado y la mano de obra. No cubre golpes, líquidos ni daños nuevos después de la entrega.</p></details>
+      <details><summary>¿Hacen desbloqueos y formateos?</summary><p>Sí: patrón olvidado, cuenta Google (FRP), liberación de operador y flasheo. Pedimos DNI y comprobante del equipo: solo trabajamos con celulares del dueño.</p></details>
+      <details><summary>¿Hay que dejar seña?</summary><p>Solo cuando hay que comprar un repuesto específico para tu modelo. El resto se paga al retirar.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- DÓNDE -->
+<section class="sec sec-dark" id="donde">
+  <div class="wrap where">
+    <div>
+      <h2 class="bordered">Dónde estamos</h2>
+      <p class="addr" id="addr">Barragán Bastilla 6662, La Matanza</p>
+      <p class="hours" id="hours">Lunes a sábados de 9 a 19 h</p>
+      <div class="where-btns">
+        <a class="btn btn-wa" id="wa-donde" href="#" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg>Escribinos</a>
+        <a class="btn btn-ghost" id="maps" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <div class="map-frame" id="map-frame"></div>
+      <a class="map" id="map" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 320 200" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+        <rect width="320" height="200" fill="#0a5a62"/>
+        <g stroke="rgba(255,255,255,.18)" stroke-width="10" fill="none"><path d="M-10 60H330M-10 140H330M70-10V210M160-10V210M250-10V210"/></g>
+        <g stroke="rgba(255,255,255,.35)" stroke-width="3" fill="none"><path d="M-10 60H330M-10 140H330M70-10V210M160-10V210M250-10V210"/></g>
+        <circle cx="160" cy="100" r="30" fill="rgba(255,181,71,.25)"/>
+        <path d="M160 70c-11 0-20 9-20 20 0 14 20 36 20 36s20-22 20-36c0-11-9-20-20-20z" fill="#ffb547" stroke="#06343a" stroke-width="3"/>
+        <circle cx="160" cy="90" r="7" fill="#06343a"/>
+      </svg>
+      <span class="map-cta">Abrir en Google Maps</span>
+      </a>
+      <a class="map-open hidden" id="map-open" href="#" target="_blank" rel="noopener">Abrir en Google Maps</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><b id="foot-name">SuperCell La Matanza</b> · Reparación de celulares de todas las marcas.</p>
+    <p class="fine">Los precios se calculan con repuestos publicados en Mercado Libre y pueden variar. Los nombres y logos de las marcas pertenecen a sus dueños y se muestran solo para indicar qué equipos reparamos.</p>
+    <p class="fine" id="foot-ig"></p>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg></a>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-4A8.5 8.5 0 1 1 8.3 19z"/><path d="M9.2 9.3c.2 2.4 3.1 5.2 5.5 5.5l1.1-1.1-1.7-1.1-.9.7a4.8 4.8 0 0 1-2.4-2.4l.7-.9L10.3 8.2z" fill="currentColor" stroke="none"/></symbol>
+</svg>
+
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
