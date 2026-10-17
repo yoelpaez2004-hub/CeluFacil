@@ -87,8 +87,15 @@ function elegirMarca(m) {
 }
 function renderModelos() {
   const q = norm($("#q-modelo").value.trim()); const m = MARCAS[sel.marca] || { alta: [], media: [], baja: [] };
-  const todos = [...m.alta, ...m.media, ...m.baja].filter(x => !q || norm(x).includes(q));
-  $("#models").innerHTML = todos.length ? todos.map(x => { const f = fotos[`${sel.marca}|${x}`]; return `<button class="model-btn" type="button" data-x="${esc(x)}"><span class="m-img">${f ? `<img src="modelos/${esc(f.archivo)}" alt="" loading="lazy" onerror="this.replaceWith(siluetaEl())">` : silueta()}</span><span class="m-name">${esc(x)}</span></button>`; }).join("") : `<p class="empty">No encontramos ese modelo. Escribinos igual: lo arreglamos.</p>`;
+  const tile = x => { const f = fotos[`${sel.marca}|${x}`]; return `<button class="model-btn" type="button" data-x="${esc(x)}"><span class="m-img">${f ? `<img src="modelos/${esc(f.archivo)}" alt="" loading="lazy" onerror="this.replaceWith(siluetaEl())">` : silueta()}</span><span class="m-name">${esc(x)}</span></button>`; };
+  if (q) {
+    const todos = [...m.alta, ...m.media, ...m.baja].filter(x => norm(x).includes(q));
+    $("#models").innerHTML = todos.length ? todos.map(tile).join("") : `<p class="empty">No encontramos ese modelo. Escribinos igual: lo arreglamos.</p>`;
+    return;
+  }
+  // Sin búsqueda: agrupados por gama, los más nuevos primero, para no perderse en listas largas
+  const GAMAS = [["alta", "Gama alta"], ["media", "Gama media"], ["baja", "Gama económica"]];
+  $("#models").innerHTML = GAMAS.filter(([g]) => m[g].length).map(([g, t]) => `<h3 class="m-gama">${t}</h3>${m[g].map(tile).join("")}`).join("");
 }
 function elegirModelo(x) {
   sel.modelo = x; sel.gama = gamaDe(sel.marca, x); sel.falla = -1;

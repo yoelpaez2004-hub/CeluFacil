@@ -58,8 +58,8 @@ console.log("Flujo principal");
   await test("marca → modelos con filtro de gama", () => {
     w.abrirMarca("Samsung");
     eq(d.querySelector(".screen.active").dataset.screen, "modelos");
-    const n = d.querySelectorAll("#modelos .ri").length; assert(n === 23, "23 modelos Samsung: " + n);
-    ev("sel.gamaF='baja'; renderModelos()"); eq(d.querySelectorAll("#modelos .ri").length, 9, "9 de gama baja");
+    const n = d.querySelectorAll("#modelos .ri").length; assert(n === 132, "132 modelos Samsung: " + n);
+    ev("sel.gamaF='baja'; renderModelos()"); eq(d.querySelectorAll("#modelos .ri").length, 44, "44 de gama baja");
     assert(!d.querySelector("#back").classList.contains("hidden"), "botón volver visible");
   });
   await test("modelo → fallas con precio = mano de obra + repuesto con recargo", () => {
@@ -607,16 +607,16 @@ console.log("Renovación 2.1: clientes, garantía, compras, avisos, modelos prop
     ev("ordenes = ordenes.filter(o => o.id < 90)"); ev('store.set("ordenes", ordenes)'); w.go("inicio"); assert(d.querySelector("#avisos").classList.contains("hidden"), "sin demoras no se muestra");
   });
   await test("marcas y modelos propios: se agregan desde la lista de modelos, quedan en el respaldo y se pueden quitar", async () => {
-    eq(w.agregarModelo("Samsung", "Galaxy A16", "media"), true); assert(ev("MARCAS.Samsung.media").includes("Galaxy A16"));
-    eq(w.agregarModelo("Samsung", "galaxy a16", "baja"), false, "no duplica"); eq(w.gamaDe("Samsung", "Galaxy A16"), "media");
-    w.abrirMarca("Samsung"); assert([...d.querySelectorAll("#modelos .ri .t")].some(e => e.textContent.includes("Galaxy A16") && e.querySelector(".opc")), "aparece como propio");
+    eq(w.agregarModelo("Samsung", "Galaxy Z99", "media"), true); assert(ev("MARCAS.Samsung.media").includes("Galaxy Z99"));
+    eq(w.agregarModelo("Samsung", "galaxy z99", "baja"), false, "no duplica"); eq(w.gamaDe("Samsung", "Galaxy Z99"), "media");
+    w.abrirMarca("Samsung"); assert([...d.querySelectorAll("#modelos .ri .t")].some(e => e.textContent.includes("Galaxy Z99") && e.querySelector(".opc")), "aparece como propio");
     const p = w.nuevaMarca(); await tick(); d.querySelector("#dlg-input").value = "Infinix"; await dlgOk(); await tick(); d.querySelector("#dlg-input").value = "Hot 30"; await dlgOk(); await p;
     assert(ev("MARCAS.Infinix") && ev("MARCAS.Infinix.baja").includes("Hot 30"), "marca nueva con su modelo");
     assert(w.listaMarcas().includes("Infinix") && w.listaMarcas()[w.listaMarcas().length - 1] === "Otro", "Otro queda al final");
     w.go("inicio"); w.toggleMarcas(); assert([...d.querySelectorAll("#marcas .brand small")].some(e => e.textContent === "Infinix"), "en Otras marcas"); w.toggleMarcas();
     eq(JSON.parse(w.localStorage.getItem("cf_marcas_extra")).Infinix.baja[0], "Hot 30");
     w.go("ajustes"); eq(d.querySelectorAll("#marcas-propias .pitem").length, 2);
-    w.quitarModelo("Infinix", "Hot 30"); eq(ev("MARCAS.Infinix"), undefined, "la marca vacía desaparece"); w.quitarModelo("Samsung", "Galaxy A16"); assert(!ev("MARCAS.Samsung.media").includes("Galaxy A16"));
+    w.quitarModelo("Infinix", "Hot 30"); eq(ev("MARCAS.Infinix"), undefined, "la marca vacía desaparece"); w.quitarModelo("Samsung", "Galaxy Z99"); assert(!ev("MARCAS.Samsung.media").includes("Galaxy Z99"));
   });
   await test("el presupuesto se puede enviar como imagen (PNG)", async () => {
     w.HTMLCanvasElement.prototype.getContext = function () { return { fillRect() { }, fillText() { }, measureText: t => ({ width: t.length * 12 }), beginPath() { }, moveTo() { }, lineTo() { }, stroke() { }, font: "", fillStyle: "", strokeStyle: "", textAlign: "", lineWidth: 1 }; };

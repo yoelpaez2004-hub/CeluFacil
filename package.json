@@ -1,6 +1,6 @@
 {
   "name": "celufacil",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": true,
   "description": "Celu Fácil — diagnóstico, presupuesto y órdenes para talleres de reparación de celulares",
   "scripts": {

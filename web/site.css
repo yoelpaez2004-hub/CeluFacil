@@ -106,6 +106,8 @@ h2.bordered{font-size:clamp(26px,4.5vw,34px);margin:0 0 20px}
 .m-img img{max-width:44px;max-height:78px;object-fit:contain}
 .m-img .sil{width:40px;height:72px}
 .m-name{word-break:break-word}
+.m-gama{grid-column:1/-1;font-size:14px;color:var(--t2);margin:8px 0 0;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.m-gama:first-child{margin-top:0}
 
 /* Fallas: categorías → fallas */
 .cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}

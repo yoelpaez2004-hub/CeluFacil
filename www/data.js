@@ -3,79 +3,79 @@
 
 const MARCAS = {
   Samsung: {
-    alta: ["Galaxy S24 Ultra","Galaxy S24","Galaxy S23 Ultra","Galaxy S23","Galaxy S22","Galaxy Z Flip 5","Galaxy Z Fold 5"],
-    media: ["Galaxy A55","Galaxy A54","Galaxy A35","Galaxy A34","Galaxy A25","Galaxy A24","Galaxy A15"],
-    baja: ["Galaxy A05","Galaxy A05s","Galaxy A04","Galaxy A04e","Galaxy A03","Galaxy A03 Core","Galaxy A14","Galaxy A13","Galaxy A12"]
+    alta: ["Galaxy S25 Ultra","Galaxy S25+","Galaxy S25","Galaxy S25 FE","Galaxy S24 Ultra","Galaxy S24+","Galaxy S24","Galaxy S24 FE","Galaxy S23 Ultra","Galaxy S23+","Galaxy S23","Galaxy S23 FE","Galaxy S22 Ultra","Galaxy S22+","Galaxy S22","Galaxy S21 Ultra","Galaxy S21+","Galaxy S21","Galaxy S21 FE","Galaxy S20 Ultra","Galaxy S20+","Galaxy S20","Galaxy S20 FE","Galaxy S10+","Galaxy S10","Galaxy S10e","Galaxy Note 20 Ultra","Galaxy Note 20","Galaxy Note 10+","Galaxy Note 10","Galaxy Z Flip 6","Galaxy Z Flip 5","Galaxy Z Flip 4","Galaxy Z Flip 3","Galaxy Z Fold 6","Galaxy Z Fold 5","Galaxy Z Fold 4"],
+    media: ["Galaxy A56","Galaxy A55","Galaxy A54","Galaxy A53","Galaxy A52s","Galaxy A52","Galaxy A51","Galaxy A50","Galaxy A36","Galaxy A35","Galaxy A34","Galaxy A33","Galaxy A32","Galaxy A31","Galaxy A30s","Galaxy A30","Galaxy A26","Galaxy A25","Galaxy A24","Galaxy A23","Galaxy A22","Galaxy A21s","Galaxy A20s","Galaxy A20","Galaxy A17","Galaxy A16","Galaxy A15","Galaxy A73","Galaxy A72","Galaxy A71","Galaxy A70","Galaxy M55","Galaxy M54","Galaxy M53","Galaxy M35","Galaxy M34","Galaxy M33","Galaxy M32","Galaxy M23","Galaxy M22","Galaxy S9+","Galaxy S9","Galaxy S8+","Galaxy S8","Galaxy Note 9","Galaxy Note 8","Galaxy A9 2018","Galaxy A8 2018","Galaxy A7 2018","Galaxy A80","Galaxy A60"],
+    baja: ["Galaxy A14","Galaxy A13","Galaxy A12","Galaxy A11","Galaxy A10s","Galaxy A10","Galaxy A07","Galaxy A06","Galaxy A05s","Galaxy A05","Galaxy A04s","Galaxy A04e","Galaxy A04","Galaxy A03s","Galaxy A03 Core","Galaxy A03","Galaxy A02s","Galaxy A02","Galaxy A01 Core","Galaxy A01","Galaxy M15","Galaxy M14","Galaxy M13","Galaxy M12","Galaxy M11","Galaxy M10","Galaxy J8","Galaxy J7 Prime","Galaxy J7 Pro","Galaxy J7 Neo","Galaxy J7","Galaxy J6+","Galaxy J6","Galaxy J5 Prime","Galaxy J5","Galaxy J4+","Galaxy J4 Core","Galaxy J4","Galaxy J2 Core","Galaxy J2 Prime","Galaxy A6+","Galaxy A6","Galaxy A5 2017","Galaxy A3 2017"]
   },
   Motorola: {
-    alta: ["Edge 50 Pro","Edge 40","Edge 40 Neo","Razr 40"],
-    media: ["Moto G84","Moto G73","Moto G54","Moto G53","Moto G34","Moto G24 Power"],
-    baja: ["Moto G23","Moto G22","Moto G14","Moto G13","Moto G04","Moto E13","Moto E22","Moto E40"]
+    alta: ["Edge 60 Pro","Edge 60 Fusion","Edge 60","Edge 50 Ultra","Edge 50 Pro","Edge 50 Fusion","Edge 50 Neo","Edge 50","Edge 40 Pro","Edge 40","Edge 40 Neo","Edge 30 Ultra","Edge 30 Pro","Edge 30 Fusion","Edge 30 Neo","Edge 30","Edge 20 Pro","Edge 20","Edge 20 Lite","Edge+","Edge","Razr 60 Ultra","Razr 60","Razr 50 Ultra","Razr 50","Razr 40 Ultra","Razr 40","Moto G200","Moto G100"],
+    media: ["Moto G86","Moto G85","Moto G84","Moto G82","Moto G75","Moto G73","Moto G72","Moto G71","Moto G62","Moto G60s","Moto G60","Moto G56","Moto G55","Moto G54","Moto G53","Moto G52","Moto G51","Moto G50","Moto G45","Moto G42","Moto G41","Moto G40 Fusion","Moto G35","Moto G34","Moto G32","Moto G31","Moto G30","Moto G Stylus","Moto G 5G","Moto G9 Plus","Moto G8 Plus","Moto G7 Plus","Moto G6 Plus","Moto One Fusion+","Moto One Hyper","Moto One Zoom","Moto One Vision","Moto One Action"],
+    baja: ["Moto G24 Power","Moto G24","Moto G23","Moto G22","Moto G20","Moto G15","Moto G14","Moto G13","Moto G10","Moto G05","Moto G04","Moto G9 Play","Moto G9 Power","Moto G8 Play","Moto G8 Power","Moto G8 Power Lite","Moto G8","Moto G7 Play","Moto G7 Power","Moto G7","Moto G6 Play","Moto G6","Moto G5S Plus","Moto G5S","Moto G5 Plus","Moto G5","Moto E40","Moto E32","Moto E30","Moto E22","Moto E20","Moto E14","Moto E13","Moto E7 Power","Moto E7i Power","Moto E7 Plus","Moto E7","Moto E6s","Moto E6 Play","Moto E6 Plus","Moto E6i","Moto E6","Moto E5 Play","Moto E5 Plus","Moto E5","Moto E4 Plus","Moto E4","Moto One Fusion","Moto One Macro","Moto One","Moto C Plus","Moto C"]
   },
   Xiaomi: {
-    alta: ["Xiaomi 14","Xiaomi 13T","Xiaomi 13 Lite","POCO F6","POCO F5"],
-    media: ["Redmi Note 13 Pro","Redmi Note 13","Redmi Note 12 Pro","Redmi Note 12","Redmi Note 11","POCO X6","POCO X5","POCO M6 Pro"],
-    baja: ["Redmi 13C","Redmi 12C","Redmi 12","Redmi A3","Redmi A2","Redmi 10C","Redmi 9A","POCO C65","POCO C55"]
+    alta: ["Xiaomi 15","Xiaomi 14T Pro","Xiaomi 14T","Xiaomi 14","Xiaomi 13T Pro","Xiaomi 13T","Xiaomi 13 Pro","Xiaomi 13","Xiaomi 13 Lite","Xiaomi 12T Pro","Xiaomi 12T","Xiaomi 12 Pro","Xiaomi 12","Xiaomi 12 Lite","Xiaomi 11T Pro","Xiaomi 11T","Xiaomi 11 Lite 5G NE","Mi 11","Mi 11 Lite","Mi 10T Pro","Mi 10T","Mi 10T Lite","Mi 10","Mi 9T Pro","Mi 9T","Mi 9","POCO F7 Pro","POCO F7","POCO F6 Pro","POCO F6","POCO F5 Pro","POCO F5","POCO F4","POCO F3","POCO X7 Pro","POCO X6 Pro"],
+    media: ["Redmi Note 14 Pro+","Redmi Note 14 Pro","Redmi Note 14","Redmi Note 13 Pro+","Redmi Note 13 Pro","Redmi Note 13","Redmi Note 12 Pro+","Redmi Note 12 Pro","Redmi Note 12S","Redmi Note 12","Redmi Note 11 Pro+","Redmi Note 11 Pro","Redmi Note 11S","Redmi Note 11","Redmi Note 10 Pro","Redmi Note 10S","Redmi Note 10","Redmi Note 9 Pro","Redmi Note 9S","Redmi Note 9","Redmi Note 8 Pro","Redmi Note 8","Redmi Note 7","POCO X7","POCO X6","POCO X5 Pro","POCO X5","POCO X4 Pro","POCO X3 Pro","POCO X3 NFC","POCO X3","POCO M6 Pro","POCO M5s","POCO M4 Pro","POCO M3 Pro","Mi A3","Mi A2","Mi A2 Lite","Mi A1"],
+    baja: ["Redmi 15C","Redmi 14C","Redmi 13","Redmi 13C","Redmi 12","Redmi 12C","Redmi 10","Redmi 10C","Redmi 10A","Redmi 9","Redmi 9T","Redmi 9C","Redmi 9A","Redmi 8","Redmi 8A","Redmi 7","Redmi 7A","Redmi 6","Redmi 6A","Redmi A5","Redmi A3","Redmi A2","Redmi A1","POCO C75","POCO C65","POCO C61","POCO C55","POCO C51","POCO C40","POCO M6","POCO M5","POCO M3"]
   },
   iPhone: {
-    alta: ["iPhone 15 Pro Max","iPhone 15 Pro","iPhone 15","iPhone 14 Pro Max","iPhone 14 Pro","iPhone 14"],
-    media: ["iPhone 13","iPhone 13 mini","iPhone 12","iPhone 12 mini","iPhone SE 2022"],
-    baja: ["iPhone 11","iPhone XR","iPhone X","iPhone 8","iPhone 7","iPhone SE 2020"]
+    alta: ["iPhone 17 Pro Max","iPhone 17 Pro","iPhone 17","iPhone Air","iPhone 16 Pro Max","iPhone 16 Pro","iPhone 16 Plus","iPhone 16","iPhone 15 Pro Max","iPhone 15 Pro","iPhone 15 Plus","iPhone 15","iPhone 14 Pro Max","iPhone 14 Pro","iPhone 14 Plus","iPhone 14","iPhone 13 Pro Max","iPhone 13 Pro","iPhone 12 Pro Max","iPhone 12 Pro"],
+    media: ["iPhone 16e","iPhone 13","iPhone 13 mini","iPhone 12","iPhone 12 mini","iPhone 11 Pro Max","iPhone 11 Pro","iPhone XS Max","iPhone XS","iPhone SE 2022"],
+    baja: ["iPhone 11","iPhone XR","iPhone X","iPhone 8 Plus","iPhone 8","iPhone 7 Plus","iPhone 7","iPhone 6s Plus","iPhone 6s","iPhone 6 Plus","iPhone 6","iPhone SE 2020","iPhone SE 2016"]
   },
   TCL: {
-    alta: [],
-    media: ["TCL 40 SE","TCL 30 SE","TCL 40 NxtPaper"],
-    baja: ["TCL 305","TCL 306","TCL 403","TCL 405","TCL 408","TCL 30E","TCL L7"]
+    alta: ["TCL 50 Pro NxtPaper","TCL 40 NxtPaper","TCL 20 Pro 5G","TCL 10 Pro"],
+    media: ["TCL 50 SE","TCL 50 5G","TCL 40 SE","TCL 40 R","TCL 30 SE","TCL 30+","TCL 30","TCL 20 SE","TCL 20L+","TCL 20L","TCL 20 R","TCL 10 SE","TCL 10L","TCL 10 Plus"],
+    baja: ["TCL 505","TCL 501","TCL 408","TCL 406","TCL 405","TCL 403","TCL 306","TCL 305","TCL 30E","TCL 20E","TCL 20Y","TCL L10","TCL L7","TCL L5","TCL L3","TCL 1","TCL 1B"]
   },
   ZTE: {
-    alta: [],
-    media: ["Blade V50 Design","Blade A73","Blade V40 Vita"],
-    baja: ["Blade A53","Blade A54","Blade A34","Blade A52","Blade A31","Blade V30","Blade A5"]
+    alta: ["Axon 40 Ultra","Axon 30","Axon 20","nubia Z60 Ultra","nubia Neo 2","nubia Neo"],
+    media: ["Blade V60 Design","Blade V60","Blade V50 Design","Blade V50 Smart","Blade V40 Vita","Blade V40 Design","Blade V40","Blade V30","Blade V30 Vita","Blade V2020","Blade A75","Blade A73","Blade A72","Blade A71","Blade V10","Blade V9"],
+    baja: ["Blade A55","Blade A54","Blade A53","Blade A52","Blade A51","Blade A35","Blade A34","Blade A33","Blade A31","Blade A31 Lite","Blade A7s","Blade A7","Blade A5","Blade A3","Blade A3 Lite","Blade L9","Blade L8","Blade A0620"]
   },
   Realme: {
-    alta: ["Realme GT 5","Realme 11 Pro+"],
-    media: ["Realme 11","Realme 10","Realme 9","Realme C67","Realme C55"],
-    baja: ["Realme C53","Realme C51","Realme C35","Realme C33","Realme C30","Realme C25Y","Realme Narzo 50i"]
+    alta: ["Realme GT 7 Pro","Realme GT 6","Realme GT 5","Realme GT 2 Pro","Realme GT Neo 3","Realme 14 Pro+","Realme 13 Pro+","Realme 12 Pro+","Realme 11 Pro+","Realme 11 Pro","Realme 9 Pro+"],
+    media: ["Realme 14","Realme 13","Realme 12+","Realme 12","Realme 11","Realme 10","Realme 9 Pro","Realme 9","Realme 9i","Realme 8 Pro","Realme 8","Realme 8i","Realme 7 Pro","Realme 7","Realme 7i","Realme 6 Pro","Realme 6","Realme 6i","Realme 5 Pro","Realme C75","Realme C67","Realme C65","Realme C63","Realme C55","Realme Note 60","Realme Note 50"],
+    baja: ["Realme C61","Realme C53","Realme C51","Realme C35","Realme C33","Realme C31","Realme C30","Realme C25Y","Realme C25s","Realme C25","Realme C21Y","Realme C21","Realme C20","Realme C15","Realme C12","Realme C11","Realme C3","Realme C2","Realme 5","Realme 5i","Realme Narzo 50","Realme Narzo 50i","Realme Narzo 50A"]
   },
   Huawei: {
-    alta: ["P40 Pro","Mate 40 Pro","P30 Pro"],
-    media: ["Nova 10","Nova 9","P30 Lite","P smart 2021"],
-    baja: ["Y9 2019","Y7 2019","Y6 2019","Y5p","Y6p","Y7a"]
+    alta: ["P60 Pro","P50 Pro","P50","P40 Pro","P40","P30 Pro","P30","P20 Pro","Mate 50 Pro","Mate 40 Pro","Mate 30 Pro","Mate 20 Pro","Mate 20","Nova 12","Nova 11","Nova 10 Pro"],
+    media: ["Nova 10","Nova 9","Nova 8i","Nova 8","Nova 7i","Nova 5T","Nova 3","Nova 3i","P40 Lite","P30 Lite","P20 Lite","P20","P10 Lite","P10","Mate 20 Lite","Mate 10 Lite","P smart 2021","P smart 2020","P smart 2019","P smart Z","P smart","Y9s","Y9 Prime 2019","Y9 2019","Y8p","Y7p","Y7a","Y7 2019","Y7 2018"],
+    baja: ["Y6p","Y6s","Y6 2019","Y6 2018","Y6 Prime 2018","Y5p","Y5 2019","Y5 2018","Y5 Lite","Y3 2018","Honor 8X","Honor 9X","Honor 10 Lite","Honor 8A","Honor 7A"]
   },
   Nokia: {
-    alta: [],
-    media: ["Nokia G42","Nokia G21","Nokia X20"],
-    baja: ["Nokia C32","Nokia C22","Nokia C21","Nokia C12","Nokia G11","Nokia 2.4","Nokia 1.4"]
+    alta: ["Nokia X30","Nokia XR21","Nokia XR20","Nokia 8.3","Nokia 9 PureView"],
+    media: ["Nokia G60","Nokia G50","Nokia G42","Nokia G22","Nokia G21","Nokia G20","Nokia G11 Plus","Nokia G11","Nokia G10","Nokia X20","Nokia X10","Nokia 5.4","Nokia 5.3","Nokia 7.2","Nokia 7.1","Nokia 6.2","Nokia 6.1 Plus","Nokia 6.1","Nokia 7 Plus","Nokia 5.1 Plus","Nokia 8"],
+    baja: ["Nokia C32","Nokia C31","Nokia C30","Nokia C22","Nokia C21 Plus","Nokia C21","Nokia C20","Nokia C12","Nokia C10","Nokia C02","Nokia C01 Plus","Nokia C3","Nokia C2 2nd Edition","Nokia C2","Nokia C1 Plus","Nokia C1","Nokia 3.4","Nokia 2.4","Nokia 2.3","Nokia 2.2","Nokia 2.1","Nokia 1.4","Nokia 1.3","Nokia 1 Plus","Nokia 1","Nokia 3.2","Nokia 3.1","Nokia 4.2","Nokia 5.1","Nokia 5","Nokia 6","Nokia 3"]
   },
   Alcatel: {
     alta: [],
-    media: ["Alcatel 3L","Alcatel 3X"],
-    baja: ["Alcatel 1","Alcatel 1B","Alcatel 1L","Alcatel 1S","Alcatel 1V","Alcatel 3"]
+    media: ["Alcatel 5V","Alcatel 5","Alcatel 3X 2020","Alcatel 3X 2019","Alcatel 3X","Alcatel 3V","Alcatel 3L 2021","Alcatel 3L 2020","Alcatel 3L","Alcatel 3 2019","Alcatel 3","Alcatel 1S 2021","Alcatel 1S 2020","Alcatel 1S","Alcatel A7","Alcatel Idol 5","Alcatel Idol 4"],
+    baja: ["Alcatel 1 2021","Alcatel 1 2019","Alcatel 1","Alcatel 1B 2022","Alcatel 1B 2020","Alcatel 1B","Alcatel 1L 2021","Alcatel 1L","Alcatel 1V 2020","Alcatel 1V","Alcatel 1V Plus","Alcatel 1SE","Alcatel 1X","Alcatel 1C","Alcatel 3C","Alcatel A3","Alcatel A3 XL","Alcatel A5","Alcatel A30","Alcatel U5","Alcatel U50","Alcatel Pixi 4","Alcatel Pixi 4 Plus","Alcatel Pop 4","Alcatel Pop 4+","Alcatel Shine Lite"]
   },
   Noblex: {
     alta: [],
-    media: [],
-    baja: ["Noblex A50 Plus","Noblex A60 Plus","Noblex A70","Noblex A80"]
+    media: ["Noblex A90","Noblex N553"],
+    baja: ["Noblex A80","Noblex A70","Noblex A60 Plus","Noblex A60","Noblex A50 Plus","Noblex A50","Noblex N552","Noblex N551","Noblex N451","Noblex Go 2","Noblex Go+","Noblex Go"]
   },
   LG: {
-    alta: ["Velvet","G8s ThinQ","G7 ThinQ","V40 ThinQ"],
-    media: ["K61","K52","K51S","K50S","Q60","Q70"],
-    baja: ["K42","K41S","K40S","K22","K20","K11","K9"]
+    alta: ["Wing","Velvet","V60 ThinQ","V50 ThinQ","V40 ThinQ","V35 ThinQ","V30","G8X ThinQ","G8s ThinQ","G8 ThinQ","G7 ThinQ","G6"],
+    media: ["K92","K71","K62","K61","K52","K51S","K51","K50S","K50","Q70","Q60","Q6","Stylo 6","Stylo 5","Stylo 4","K12+","K12 Max","X Power 3","X Power 2","G5","G4"],
+    baja: ["K42","K41S","K40S","K40","K22","K22+","K20","K11+","K11","K10 2018","K10 2017","K10","K9","K8 2018","K8 2017","K8","K4 2017","K4","W41","W31","W30","X Power","Q Stylus","X4","X2","K3"]
   },
   Sony: {
-    alta: ["Xperia 1 III","Xperia 5 II","Xperia 1 II"],
-    media: ["Xperia 10 III","Xperia 10 II","Xperia XZ2"],
-    baja: ["Xperia L4","Xperia L3","Xperia XA2","Xperia XA1"]
+    alta: ["Xperia 1 V","Xperia 1 IV","Xperia 1 III","Xperia 1 II","Xperia 1","Xperia 5 IV","Xperia 5 III","Xperia 5 II","Xperia 5","Xperia XZ3","Xperia XZ2 Premium","Xperia XZ Premium"],
+    media: ["Xperia 10 V","Xperia 10 IV","Xperia 10 III","Xperia 10 II","Xperia 10 Plus","Xperia 10","Xperia XZ2","Xperia XZ2 Compact","Xperia XZ1","Xperia XZ1 Compact","Xperia XZ","Xperia XA2 Ultra","Xperia XA2 Plus","Xperia XA1 Ultra","Xperia XA1 Plus"],
+    baja: ["Xperia L4","Xperia L3","Xperia L2","Xperia L1","Xperia XA2","Xperia XA1","Xperia XA","Xperia E5","Xperia Z5","Xperia Z3"]
   },
   BGH: {
     alta: [],
-    media: [],
-    baja: ["Joy X2","Joy Smart","Joy Dual","Joy Max","X5"]
+    media: ["Joy X2 Pro","X5"],
+    baja: ["Joy X2","Joy Smart","Joy Dual","Joy Max","Joy A6","Joy A5","Joy X","X2","X6"]
   },
   BLU: {
     alta: [],
-    media: ["G91 Pro","G71 Plus","F91"],
-    baja: ["G50","G51","G61","Studio X10","Vivo X6","C5L"]
+    media: ["G91 Pro","G91 Max","G91","G71 Plus","G71","F91","G90 Pro","G90","Vivo XL6"],
+    baja: ["G50","G50 Plus","G51","G51 Plus","G61","G40","G33","G30","C5L","C6L","C5","Studio X10","Studio X10 Plus","Studio X12","Vivo X6","Vivo XL5","Vivo XI+","Advance L5","Advance A5","J2"]
   },
   Otro: { alta: ["Otro gama alta"], media: ["Otro gama media"], baja: ["Otro gama baja"] }
 };
@@ -217,6 +217,6 @@ const TRABAJOS = {
 };
 
 // Versión de la app y repo de GitHub. El workflow de build copia la versión de package.json acá.
-const APP_VERSION = "2.1.1";
+const APP_VERSION = "2.1.2";
 const REPO = "yoelpaez2004-hub/CeluFacil";
 const PRECIOS_URL = `https://raw.githubusercontent.com/${REPO}/main/www/precios-ml.json`;
