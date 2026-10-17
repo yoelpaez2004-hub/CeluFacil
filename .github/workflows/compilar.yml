@@ -51,7 +51,8 @@ jobs:
             LIMPIA=$(printf '%s' "$CELUFACIL_CLAVE" | tr -d ' \n\r\t"' )
             printf '%s' "${LIMPIA%%:*}" > clave/password.txt
             if ! printf '%s' "${LIMPIA#*:}" | base64 -d > clave/release.keystore 2>/dev/null || [ ! -s clave/release.keystore ]; then
-              echo "::error::El secret CELUFACIL_CLAVE no tiene el formato esperado (contraseña:base64). Borralo y volvé a crearlo pegando la línea completa de CLAVE-DE-FIRMA/secret.txt."; exit 1
+              # Diagnóstico sin revelar el secret: largo recibido y si tiene los dos puntos
+              echo "::error::El secret CELUFACIL_CLAVE no tiene el formato esperado (contraseña:base64). Recibí ${#LIMPIA} caracteres (la línea de secret.txt tiene ~3670) y $(case "$LIMPIA" in *:*) echo 'sí';; *) echo 'no';; esac) tiene dos puntos. Borralo y volvé a crearlo pegando la línea completa de CLAVE-DE-FIRMA/secret.txt."; exit 1
             fi
             echo "Usando la clave del secret CELUFACIL_CLAVE."
           elif [ -n "$KEYSTORE_BASE64" ]; then
